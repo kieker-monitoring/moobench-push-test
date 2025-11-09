@@ -67,4 +67,4 @@ jobs:
         run: 
           cp dev/bench/data.js ../moobench-data/dev/bench/data.js
           cd ../moobench-data
-          git push "$TARGET_SSH" "$TARGET_BRANCH"
+          git push origin gh-pages
