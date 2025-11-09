@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'moobench.tools.receiver.RecordReceiverMain'
+}
+
+dependencies {
+    implementation 'net.kieker-monitoring:kieker:2.0.2'
+    implementation 'de.cau.cs.se.teetime:teetime:3.1.1'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'  
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "moobench.tools.receiver.RecordReceiverMain"
+    }
+    
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+	doLast {
+		copy {
+		    from jar
+		    into "../../frameworks/Kieker-java/receiver/"
+	    }
+		copy {
+		    from jar
+		    into "../../frameworks/Kieker-python/receiver/"
+	    }
+	}
+}

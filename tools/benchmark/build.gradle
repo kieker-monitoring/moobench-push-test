@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+dependencies {
+    implementation 'com.beust:jcommander:1.72'
+    implementation 'ch.qos.logback:logback-classic:1.5.18'
+}
+
+application {
+    mainClass = 'moobench.benchmark.BenchmarkMain'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Implementation-Title': 'Moobench Benchmark',
+                   'Implementation-Version': '0.1-SNAPSHOT',
+                   'Main-Class': 'moobench.benchmark.BenchmarkMain'
+    }
+    
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}

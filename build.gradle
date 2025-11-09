@@ -1,0 +1,30 @@
+/*
+ * Main gradle build script.
+ */
+
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:29.0-jre'
+    implementation 'com.beust:jcommander:1.72'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.13'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url = "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    
+    apply plugin: 'java'
+}

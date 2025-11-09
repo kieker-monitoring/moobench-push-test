@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: Moobench Benchmark Instrumented
+Implementation-Version: 0.1-SNAPSHOT
+Main-Class: moobench.benchmark.BenchmarkMain
+
