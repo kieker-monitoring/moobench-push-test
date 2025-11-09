@@ -51,6 +51,10 @@ jobs:
           ../../../analysis/getGHActionsFormat.sh &> output.json
           cat output.json
           mv output.json ../../../
+      - name: Configure git user
+        run: |
+          git config --global user.email "ci-bot@kieker.org"
+          git config --global user.name  "Kieker CI"          
       - name: Get old data
         run: |
            git clone -b gh-pages git@github.com:kieker-monitoring/moobench-data.git ../moobench-data
