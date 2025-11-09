@@ -66,6 +66,6 @@ jobs:
           skip-fetch-gh-pages: false
           auto-push: false
       - name: Push data
-        run: 
+        run: |
           cd ../moobench-data
           git push origin gh-pages
