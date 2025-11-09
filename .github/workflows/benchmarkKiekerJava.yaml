@@ -63,6 +63,7 @@ jobs:
           output-file-path: output.json
           fail-on-alert: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-fetch-gh-pages: false
           auto-push: false
       - name: Push data
         run: 
