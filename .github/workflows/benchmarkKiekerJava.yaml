@@ -58,6 +58,7 @@ jobs:
       - name: Get old data
         run: |
            git clone -b gh-pages git@github.com:kieker-monitoring/moobench-data.git ../moobench-data
+           sed '1s/^window\.BENCHMARK_DATA = //' ../moobench-data/dev/bench/data.js > ../moobench-data/dev/bench/data2.js
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
