@@ -12,7 +12,5 @@ rootProject.name = 'moobench'
 include 'tools:benchmark'
 include 'tools:receiver'
 include 'tools:compile-results'
-include 'frameworks:inspectIT-java'
-include 'frameworks:OpenTelemetry-java'
 include 'frameworks:Kieker-java'
 
