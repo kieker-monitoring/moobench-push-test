@@ -68,4 +68,6 @@ jobs:
       - name: Push data
         run: |
           cd ../moobench-data
+          git remote -v
+          git commit -m "Benchmark Results $GITHUB_SHA"
           git push origin gh-pages
