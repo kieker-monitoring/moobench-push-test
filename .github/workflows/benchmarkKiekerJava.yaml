@@ -49,6 +49,7 @@ jobs:
           tool: 'customSmallerIsBetter'
           output-file-path: output.json
           fail-on-alert: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: false
       - name: Start ssh-agent and add private key
         uses: webfactory/ssh-agent@v0.9.1
