@@ -59,12 +59,12 @@ jobs:
         with:
           name: 'Kieker-java'
           tool: 'customSmallerIsBetter'
+          external-data-json-path: ../moobench-data/dev/bench/data.js
           output-file-path: output.json
           fail-on-alert: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: false
       - name: Push data
         run: 
-          cp dev/bench/data.js ../moobench-data/dev/bench/data.js
           cd ../moobench-data
           git push origin gh-pages
