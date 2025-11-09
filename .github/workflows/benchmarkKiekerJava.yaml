@@ -42,6 +42,10 @@ jobs:
           ../../../analysis/getGHActionsFormat.sh &> output.json
           cat output.json
           mv output.json ../../../
+      - name: Start ssh-agent and add private key
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY_MOOBENCH_DATA }}          
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
