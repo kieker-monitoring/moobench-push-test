@@ -37,9 +37,6 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
-      - name: Get old data
-        run: |
-           git clone -b gh-pages git@github.com:kieker-monitoring/moobench-data.git ../moobench-data
       - name: Execute MooBench Benchmark
         run: |
           ./setup.sh
@@ -54,6 +51,9 @@ jobs:
           ../../../analysis/getGHActionsFormat.sh &> output.json
           cat output.json
           mv output.json ../../../
+      - name: Get old data
+        run: |
+           git clone -b gh-pages git@github.com:kieker-monitoring/moobench-data.git ../moobench-data
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
