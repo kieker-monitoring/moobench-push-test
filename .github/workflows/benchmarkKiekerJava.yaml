@@ -64,7 +64,7 @@ jobs:
         with:
           name: 'Kieker-java'
           tool: 'customSmallerIsBetter'
-          external-data-json-path: ../moobench-data/dev/bench/data.js
+          external-data-json-path: ../moobench-data/dev/bench/data2.js
           output-file-path: output.json
           fail-on-alert: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -74,6 +74,7 @@ jobs:
         run: |
           cd ../moobench-data
           git remote -v
+          sed '1s/^/window.BENCHMARK_DATA = /' dev/bench/data2.js > dev/bench/data.js
           git add dev/bench/data.js
           git commit -m "Benchmark Results $GITHUB_SHA"
           git push origin gh-pages
